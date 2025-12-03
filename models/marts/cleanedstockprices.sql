@@ -1,4 +1,7 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='incremental',
+    unique_key='trade_date'
+) }}
 
 select
     symbol,
@@ -10,4 +13,8 @@ select
     volume,
     processed_at
 from {{ ref('mystagetable') }}
+{% if is_incremental() %}
+where trade_date > (select max(trade_date) from {{ this }})
+{% endif %}
 order by trade_date desc
+
