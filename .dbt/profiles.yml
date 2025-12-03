@@ -1,0 +1,11 @@
+snowproj:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('snowflake_account') }}"
+      user: "{{ env_var('snowflake_user') }}"
+      password: "{{ env_var('snowflake_password') }}"
+      warehouse: "{{ env_var('snowflake_datawarehouse') }}"
+      database: "{{ env_var('snowflake_database') }}"
+      schema: public

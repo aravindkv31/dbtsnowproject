@@ -1,0 +1,11 @@
+
+name: "snowproj"
+version: "1.0.0"
+profile: "snowproj"
+
+models:
+  snowproj:
+    staging:
+      materialized: view
+    marts:
+      materialized: table
